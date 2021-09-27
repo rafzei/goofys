@@ -1,6 +1,6 @@
 FROM alpine:3.7
 
-MAINTAINER Cloud Posse, LLC
+MAINTAINER Rafal Zeidler
 
 RUN apk update && apk add gcc ca-certificates openssl musl-dev git fuse syslog-ng coreutils curl
 
@@ -17,9 +17,12 @@ ENV STAT_CACHE_TTL 1m0s
 ENV TYPE_CACHE_TTL 1m0s
 ENV DIR_MODE 0700
 ENV FILE_MODE 0600
-ENV UID 0
-ENV GID 0
+ENV UID 1000
+ENV GID 1000
 ENV MOUNT_ACCESS nonempty
+ENV CREATE_USER False
+ENV NEW_GROUP group
+ENV NEW_USER user
 
 RUN mkdir /mnt/s3
 

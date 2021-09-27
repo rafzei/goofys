@@ -1,7 +1,27 @@
 # goofys
 
 [Goofys](https://github.com/kahing/goofys) S3 Filesystem Docker Implementation.
+Fork of [Cloudposse](https://github.com/cloudposse/goofys
 
+## Env variables and default values
+
+``` bash
+MOUNT_DIR /mnt/s3
+REGION us-east-1
+BUCKET teleport-bucket
+STAT_CACHE_TTL 1m0s
+TYPE_CACHE_TTL 1m0s
+DIR_MODE 0700
+FILE_MODE 0600
+UID 1000
+GID 1000
+MOUNT_ACCESS nonempty
+CREATE_USER False
+NEW_GROUP group
+NEW_USER user
+```
+
+If CREATE_USER = True, new group NEW_GROUP(default:group) and new user NEW_USER (default:user) will be created
 
 ## Examples
 
@@ -9,7 +29,7 @@
 export AWS_ACCESS_KEY_ID=`grep aws_access_key_id ~/.aws/credentials | awk '{print $3}'`
 export AWS_SECRET_ACCESS_KEY=`grep aws_secret_access_key ~/.aws/credentials | awk '{print $3}'`
 
-docker run -it --rm --privileged -e BUCKET="bucket" -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY cloudposse/goofys
+docker run -it --rm --privileged -e BUCKET="bucket" -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY rafzei/goofys
 ```
 
 By default S3 bucket will be mounted under `/mnt/s3`, but you could customize the mount point by setting `MOUNT_DIR` environment variable.
