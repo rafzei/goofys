@@ -1,7 +1,7 @@
 # goofys
 
-[Goofys](https://github.com/kahing/goofys) S3 Filesystem Docker Implementation.
-Fork of [Cloudposse](https://github.com/cloudposse/goofys
+[Goofys](https://github.com/kahing/goofys) S3 Filesystem Docker Implementation.  
+Fork of [Cloudposse](https://github.com/cloudposse/goofys)
 
 ## Env variables and default values
 
