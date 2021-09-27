@@ -3,6 +3,8 @@
 [Goofys](https://github.com/kahing/goofys) S3 Filesystem Docker Implementation.  
 Fork of [Cloudposse](https://github.com/cloudposse/goofys)
 
+This image is available [here](https://hub.docker.com/r/rafzei/goofys)
+
 ## Env variables and default values
 
 ``` bash
