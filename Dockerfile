@@ -1,13 +1,14 @@
-FROM alpine:3.7
+FROM alpine:3.16.2
 
-MAINTAINER Rafal Zeidler
+LABEL maintainer="Rafal Zeidler webdler@gmail.com"
 
 RUN apk update && apk add gcc ca-certificates openssl musl-dev git fuse syslog-ng coreutils curl
 
-ENV GOOFYS_VERSION 0.23.1
+ENV GOOFYS_VERSION 0.24.0
 RUN curl --fail -sSL -o /usr/local/bin/goofys https://github.com/kahing/goofys/releases/download/v${GOOFYS_VERSION}/goofys \
     && chmod +x /usr/local/bin/goofys
-RUN curl -sSL -o /usr/local/bin/catfs https://github.com/kahing/catfs/releases/download/v0.8.0/catfs && chmod +x /usr/local/bin/catfs
+ENV CATFS_VERSION 0.9.0
+RUN curl -sSL -o /usr/local/bin/catfs https://github.com/kahing/catfs/releases/download/v${CATFS_VERSION}/catfs && chmod +x /usr/local/bin/catfs
 
 ARG ENDPOINT
 ENV MOUNT_DIR /mnt/s3
@@ -28,7 +29,7 @@ RUN mkdir /mnt/s3
 
 VOLUME /mnt/s3
 
-ADD rootfs/ /
+COPY rootfs/ /
 
 RUN chmod +x /usr/bin/run.sh
 
